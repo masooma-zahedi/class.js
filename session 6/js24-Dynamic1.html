@@ -5,26 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynimic1</title>
     <link rel="shortcut icon" href="/img/happy-smile.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/css/raz.css">
     <script src="/js/raz.js"></script>
+    <style>
+        /* h2.first{border:3px dotted #d29999;
+        text-decoration: underline;}
+        .change{
+            background-color: rgb(173, 80, 158);
+            font-size: 32px;
+            border: 2px solid #2399bc;
+            margin: 5px auto;
+        } */
+/* ============================================== */
+        ul#accd{
+            width: 400px;
+            border: 2px solid #99a376;
+            margin: 0 auto;
+            background-color: rgb(194, 228, 100);
+            padding: 0;
+        }
+        #accd li{
+            list-style-type: none;
+            padding: 0 15px;
+            height: 30px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        
+        }
+        #accd li h3{
+            background-color: rgb(59, 145, 119);
+            padding: 5px 10px;
+            margin: 0;
+        }
+        #accd li:hover h3{
+            background-color: hsl(162, 42%, 30%);
+            padding: 5px 22px;
+
+        }
+        .showItem{
+            height: auto !important;
+        }
+
+
+    </style>
     <script>
         window.addEventListener('DOMContentLoaded',function(){
-            _('#btn1').addEventListener('click',function(){
-                _all('h2')[0].style.color ='#90c311'
-               console.log(_all('h2')[0].style.color)
-            })
+            // _('#btn1').addEventListener('click',function(){
+            //     _all('h2')[0].style.color ='#90c311'
+            //     _all('h2')[0].style.fontSize = "32px";
+            //     _all('h2')[0].style.textDecoration = "underline";
+            // })
+            // _('#btn2').addEventListener('click',function(){
+            //     _all('h2')[1].setAttribute('style','border:2px solid red; background-color:#af3400;')
+            // })
+            // _('#btn3').addEventListener('click', function(){
+            //     _all('h2')[2].style.cssText = 'color:#23bb90; margin: 0 100px';
+
+            // })
+
+            // for(let i = 0; i < _all('h2').length; i++){
+            //     _all('h2')[i].addEventListener('click',function(){
+                    // this.className = 'change';
+                    //======setTimeout================
+                    // setTimeout(function(){
+                    //     _all('h2')[i].className = '';
+                    // }, 2000);
+
+                    // ===========ClassName=============
+                    // if(this.className == 'change'){
+                    //     this.className =" ";
+                    // }else{
+                    //     this.className = 'change';
+                    // }
+
+                    // ==============ClassList==============
+                        // if(!this.classList.contains('change')){
+                        //     this.classList.add('change');
+                        // }else{
+                        //     this.classList.remove('change')
+                        // }
+                    
+                    // ====================classList.toggle==========
+                    // this.classList.toggle('change');
+            //     })
+            // }
+
+            // =========================Acordian =============
+            for(let i = 0; i < _all('li').length; i++){
+                _all('li')[i].addEventListener('click',function(){
+                    this.classList.toggle('showItem')
+                    
+                })
+
+            }
+
         })
     </script>
 </head>
 <body>
-    <button id="btn1">BTN1</button>
+    <!-- <button id="btn1">BTN1</button>
     <button id="btn2">BTN2</button>
     <button id="btn3">BTN3</button>
     <button id="btn4">BTN4</button>
-    <h2>Lorem ipsum dolor sit.</h2>
+    <h2 class="first">Lorem ipsum dolor sit.</h2>
     <h2>Totam quidem dolorum doloremque.</h2>
     <h2>Facere voluptates dolore placeat.</h2>
     <h2>Architecto optio vitae et?</h2>
     <h2>Temporibus ut dicta accusantium.</h2>
     <h2>Nostrum at architecto omnis.</h2>
+ -->
+    <hr/>
+    <ul id="accd">
+        <li>
+            <h3>consectetur</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tempora aliquid dignissimos cumque nus voluptatum recusandae dolores architecto blanditiis odit rerum consequuntur!</p>
+        </li>
+        <li>
+            <h3>Similique</h3>
+            <p>Similique, veniam. Veniam, distinctio quis sint voluptas ad cumque. Nesciunt omnis culpa vitae quasi explicabo a ducimus doloribus, perspiciatis eos sed deserunptas ad cumque. Nesciunt omnis culpa vitae quasi explicabo a ducimus doloribus, perspiciatis eos sed deserunt, pariatur laborum! Praesentium beatae esse magnam distinctio. Ipsa?</p>
+        </li>
+        <li>
+            <h3>repudiandae</h3>
+            <p>Accusamus ratione voluptatum amet, assumenda consequatur ipsum laborum vero ab, quisquam dolor sint iste eum dicta natus quos eos, officiis corrupti enim repudiandae animi excepturi officia porro reiciendis. Explicabo, fuga!</p>
+        </li>
+        <li>
+            <h3>excepturi</h3>
+            <p>Quasi laborum, dignissimos excepturi fugiat, consequatur facere ipsa illo molestias nisi itaque rerum! Iure quidem, deserunt doloribus quas omnis aut necessitatibus laudantium quaerat error id beatae eligendi repellendus commodi? Aspernatur.</p>
+        </li>
+        <li>
+            <h3>impedit</h3>
+            <p>Eaque laborum excepturi odio quis sint nostrum impedit ea unde laboriosam qui accusantium harum, quo delectus dolorem, est dolores nesciunt modi accusamus temporibus eius distinctio necessitatibus esse! A, iste eligendi?</p>
+        </li>
+        <li>
+            <h3>necessitatibus</h3>
+            <p>Assumenda vel ipsum incidunt officia doloremque ab ipsa mollitia non? Voluptates atque labore fugiat illo voluptatibus quia, nemo a non voluptatum nostrum, molestiae consequuntur dolores! Veritatis necessitatibus vitae consequuntur voluptatum.</p>
+        </li>
+    </ul>
 </body>
 </html>

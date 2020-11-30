@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynomic Content</title>
+    <link rel="shortcut icon" href="img/house2.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="css/raz.css">
+    <style>
+        #inner{
+            padding: 10px;
+            border: 2px solid #34e989;
+            width: 350px;
+            margin: 0 10px;
+        }
+        #inner label{
+            display: block;
+            margin-bottom: 10px;
+        }
+        #inner input{
+            padding: 5px 10px;
+        }
+    </style>
+    <script src="/js/raz.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded',function(){
+            _('#inner').addEventListener('submit',function(e){
+                e.preventDefault();
+                let fn = _('#fn').value;
+                let ln = _('#ln').value;
+                let em = _("#em").value;
+                _('#targ').innerHTML += fn + ' ' + ln + '<br/>' + em + '<br/>';
+                _('#fn').value = _('#ln').value = _('#em').value ="";
+                
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2>Form handling</h2>
+    <div id="targ"></div>
+    <form id="inner">
+        <label >First Name : <input type="text" id="fn"> </label>
+        <label >Last Name : <input type="text" id="ln"> </label>
+        <label >Email : <input type="Email" id="em"> </label>
+        <label ><input type="submit" id="submit"> </label>
+    </form>
+</body>
+</html>

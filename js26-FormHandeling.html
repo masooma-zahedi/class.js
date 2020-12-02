@@ -6,6 +6,8 @@
     <title>Dynomic Content</title>
     <link rel="shortcut icon" href="img/house2.jpg" type="image/x-icon">
     <link rel="stylesheet" href="css/raz.css">
+    <script src='https://kit.fontawesome.com/07f98e99cb.js'></script>
+
     <style>
         #inner{
             padding: 10px;
@@ -20,6 +22,109 @@
         #inner input{
             padding: 5px 10px;
         }
+        #newdiv{
+            border: 1px solid #23bbb0;
+            position: relative;
+        }
+        #newdiv span{
+            position: absolute;
+            top: 3px;
+            right: 3px;
+        }
+        #targ{
+    background-color: rgb(179, 43, 43);
+    width: 270px;
+    min-height: 100px;
+    position: absolute;
+    /* margin: 0 auto; */
+    border-radius: 10px;
+    bottom: 50px;
+    left: 30px;
+    color: #f2f2f2;
+    padding: 10px;
+}
+        @media only screen and (min-width: 920px){
+            #targ{
+                right: 600px;
+            }
+        }
+        #targ img{
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            padding: 3px;
+            border: 1px dotted #3499fa;
+            vertical-align: middle;
+            margin-right: 4px;
+            margin-bottom: 7px;
+        }
+        .myprod{
+            /* border: 2px solid blue; */
+            text-align: center;
+        }
+        #addC{
+            width: 70px;
+            /* height: 40px; */
+            background-color: rgba(119, 78, 25, 0.733);
+            margin: 5px ;
+            border-radius: 10px;
+            padding: 5px 5px; 
+            outline: none;
+            border: 1px solid rgba(119, 78, 25, 0.533);
+        }
+        #addC:hover{
+            cursor: pointer;
+            background-color:  rgba(78, 50, 13, 0.433);
+        }
+        .myprod div:nth-of-type(4){
+            color: #ee9e36;
+            font-weight: bold;
+        }
+        #targ{
+            text-align: center;
+        }
+        #cart{
+            width: 300px;
+            min-height: 100px;
+            background-color: rgba(65, 141, 42, 0.726);
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 10px;
+            padding-bottom: 50px;
+        }
+        #total{
+            width: 50px;
+            height: 30px;
+            background-color: rgb(19, 80, 54);
+            border-radius: 10px;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            padding: 0 10px;
+            line-height: 30px;
+            color: #f2f2f2;
+        }
+        #itemC{
+            padding: 10px;
+            border: 1px solid red;
+            position: relative;
+        }
+        #cart img{
+            width: 40px;
+            height: 40px;
+            border: 1px dotted #4400f2;
+            border-radius: 50%;
+            padding: 3px;
+            vertical-align: middle;
+            margin-right: 7px;
+        }
+        #cart-close{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
     </style>
     <script src="/js/raz.js"></script>
     <script>
@@ -29,21 +134,89 @@
                 let fn = _('#fn').value;
                 let ln = _('#ln').value;
                 let em = _("#em").value;
-                _('#targ').innerHTML += fn + ' ' + ln + '<br/>' + em + '<br/>';
+                _('#targ').innerHTML +='<div id=\'newdiv\'>'+ fn + ' ' + ln + '<br/> ( ' + em + ' )'+ '<span class=\'fa fa-window-close\' id=\'close\'></span></div>  <hr/>';
                 _('#fn').value = _('#ln').value = _('#em').value ="";
-                
             })
+
+            // Select Product
+            _('#prod').addEventListener('change',function(){
+                let tg =  _('#prod').options[_('#prod').selectedIndex];
+
+                let prodN =tg.innerText;
+
+                let prodP =parseInt(tg.value);
+
+                let pic ='<img src= \"img/'+ tg.getAttribute('data-pic') +'.jpg\">';
+
+                let desc = _('#prod').options[_('#prod').selectedIndex].getAttribute('data-desc');
+                
+                op = '';
+                op +='<div>'+ pic + '</div>';
+                op +='<div>'+ prodN + '</div>';
+                op +='<div>'+ desc+'</div>' ;
+                op +='<div> $ '+ prodP+ '</div>';
+
+                _('#targ').innerHTML = '<div class=\'myprod\'>' + op + '</div>'+'<button id=\'addC\'> Add Cart</button>';
+            })
+
+            // ================Add to Cart==================
+
+            _('#targ').addEventListener('click',function(event){
+                if(event.target.tagName == 'BUTTON'){
+                    let tg =  _('#prod').options[_('#prod').selectedIndex]
+                    let prodN = tg.innerText;
+                    let prodP =parseInt(tg.value);
+                    let pic ='<img src= \"img/'+tg.getAttribute('data-pic') +'.jpg\">';
+
+                    op ='';
+                    op = pic + prodN + ' : ' + '$ ' + prodP + '<br/>';
+
+                    _('#cart').innerHTML +='<div id=\'itemC\'>'+ op + ' <span class=\'fa fa-close\' id=\'cart-close\'></span> </div>';
+                    let oldP = parseInt(_('#total').innerHTML);
+                    let newP = prodN;
+                    _('#total').innerHTML = oldP + prodP;
+                }
+            })
+            //  ===========for close in cart
+            _('#cart').addEventListener('click',function(event){
+                for(let i = 0; i < _all("#itemC").length; i++){
+                    if( event.target.tagName == 'SPAN'){
+                            _all('#itemC')[i].style.color = "red"
+
+                        }
+                }
+            })
+        
+
+            // =======================
+
+
+
+            
         })
     </script>
 </head>
 <body>
     <h2>Form handling</h2>
     <div id="targ"></div>
+    <div id="cart">
+        <div id="total">0</div> 
+    </div>
     <form id="inner">
         <label >First Name : <input type="text" id="fn"> </label>
         <label >Last Name : <input type="text" id="ln"> </label>
         <label >Email : <input type="Email" id="em"> </label>
-        <label ><input type="submit" id="submit"> </label>
+        <label >product:
+            <select name="prod" id="prod">
+                <option data-pic='product1' data-desc='magnam sed neque' value="230">Lorem</option>
+                <option data-pic='product2' data-desc='ipsum sit amet' value="341">Dolore</option>
+                <option data-pic='product3' data-desc='molestias optio' value="789">Optio</option>
+                <option data-pic='product4' data-desc='luptatem architecto' value="67">Vel</option>
+                <option data-pic='product5' data-desc='imos! Consequun' value="456">Tempor</option>
+                <option data-pic='product6' data-desc='eriam laborum soluta s' value="912">Officiis</option>
+            </select>
+        </label>
+        <label ><input type="submit" id="submit" value="Add"> </label>
     </form>
 </body>
 </html>

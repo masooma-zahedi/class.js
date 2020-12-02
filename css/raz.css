@@ -5,15 +5,3 @@ body{
     box-sizing: border-box;
     transition: all 0.5s;
 }
-#targ{
-    background-color: rgb(179, 43, 43);
-    width: 270px;
-    min-height: 100px;
-    position: absolute;
-    /* margin: 0 auto; */
-    border-radius: 10px;
-    top: 50px;
-    right: 30px;
-    color: #f2f2f2;
-    padding: 10px;
-}
